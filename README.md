@@ -3,7 +3,4 @@
 
 Tools to manipulate images. 
 
-Used ImageMagick, exiftool.
-
-
-
+Using ImageMagick, exiftool, feh, findimagedupes.
