@@ -1,7 +1,9 @@
 
 # img_tools
 
-Tools to manipulate images. Uses ImageMagick.
+Tools to manipulate images. 
+
+Used ImageMagick, exiftool.
 
 
 
