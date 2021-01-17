@@ -40,11 +40,16 @@ else
     exit 0
 fi
 
+
+echo "SOME TESTING NEEDED"
+exit
 ##TODO can be combined to one command
+exiftool -recurse -verbose -preserve \"-CreateDate"${sign}=00:00:00 ${valu}"\" "${GLOB}"
+exiftool -recurse -verbose -preserve \"-DateTimeOriginal"${sign}=00:00:00 ${valu}"\" "${GLOB}"
+
+exit
 exiftool -recurse -verbose -preserve -CreateDate"${sign}=00:00:00 ${valu}" "${GLOB}"
 exiftool -recurse -verbose -preserve -DateTimeOriginal"${sign}=00:00:00 ${valu}" "${GLOB}"
-
-
 
 exit 0 
 #exiftool -r -v -P -CreateDate-=0:0:0 1:02:00 ./*.*
