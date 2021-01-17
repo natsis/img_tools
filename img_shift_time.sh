@@ -9,7 +9,7 @@ TIME="$1"
 GLOB="$2"
 
 echo 
-echo "fmt:  +/- HH:MM:SS"
+echo "usage: <+/- HH:MM:SS> <glob>"
 echo "$TIME  $GLOB"
 echo
 
@@ -41,8 +41,8 @@ else
 fi
 
 ##TODO can be combined to one command
-exiftool -recurse -verbose -preserve -CreateDate"${sign}=0:0:0 ${valu}" "${GLOB}"
-exiftool -recurse -verbose -preserve -DateTimeOriginal"${sign}=0:0:0 ${valu}" "${GLOB}"
+exiftool -recurse -verbose -preserve -CreateDate"${sign}=00:00:00 ${valu}" "${GLOB}"
+exiftool -recurse -verbose -preserve -DateTimeOriginal"${sign}=00:00:00 ${valu}" "${GLOB}"
 
 
 
