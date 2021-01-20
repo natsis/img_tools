@@ -1,7 +1,6 @@
 
 # img_tools
 
-test
 
 Tools to manipulate images.
 
