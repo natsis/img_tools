@@ -3,6 +3,7 @@
 #### Display images in a folder recursively sorted by resulution
 
 FOLDER="$1"
+: ${FOLDER:="./"}
 OPTIONS=" --sort pixels "
 
 if [[ ! -d "$FOLDER" ]];then
@@ -101,4 +102,3 @@ exit 0
 # --sort pixels
 # --sort size
 # --sort format
-

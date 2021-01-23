@@ -3,8 +3,8 @@
 #### Short images in folders according to brightness.
 ## The limits are fine adjusted for my specific use case scenario.
 
-
 folder="$1"
+: ${folder:="./"}
 
 echo $folder
 if [[ -d "$folder" ]]; then

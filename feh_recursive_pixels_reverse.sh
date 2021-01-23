@@ -1,8 +1,9 @@
 #!/bin/bash
 
-#### Display images in a folder recursively sorted by resulution reversed
-FOLDER="$1"
+#### Display images in a folder recursively sorted by resolution reversed
 
+FOLDER="$1"
+: ${FOLDER:="./"}
 OPTIONS=" --sort pixels "
 
 if [[ ! -d "$FOLDER" ]];then
@@ -100,5 +101,3 @@ echo "Folders : $cdirs"
 # --sort pixels
 # --sort size
 # --sort format
-
-

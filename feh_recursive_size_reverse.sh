@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #### Display images in a folder recursively sorted by file size reversed
+
 FOLDER="$1"
+: ${FOLDER:="./"}
 OPTIONS=" --sort size "
 
 if [[ ! -d "$FOLDER" ]];then
@@ -45,12 +47,7 @@ else
     OPTIONS="$(echo "${OPTIONS} --recursive --filelist "${cachelist}" ")"
 fi
 
-
-
-
-
 echo "$OPTIONS"
-
 
 feh --fullscreen                                   \
     --reverse                                      \
@@ -78,15 +75,12 @@ exit 0
 # feh --filelist by_width -S width --reverse --list .
 #    Write a list of all images in the directory to by_width, sorted by width (widest images first)
 
-
-
 # -f, --filelist file
 # This option is similar to the playlists used by music software. If file exists, it will be read for a list of files to load, in the order they appear. The format is a list of image filenames, absolute or relative to the current directory, one filename per line.
 #
 # If file doesn't exist, it will be created from the internal filelist at the end of a viewing session. This is best used to store the results of complex sorts (-Spixels for example) for later viewing.
 #
 # Any changes to the internal filelist (such as deleting a file or it being pruned for being unloadable) will be saved to file when feh exits. You can add files to filelists by specifying them on the command line when also specifying the list.
-
 
 # --reverse
 # --sort name
@@ -97,5 +91,3 @@ exit 0
 # --sort pixels
 # --sort size
 # --sort format
-
-

@@ -3,13 +3,14 @@
 #### remove or trash images based on given x, y or x*y
 
 folder="$1"
+: ${folder:="./"}
 
 if [ ! -d "$folder" ];then
     echo "Give a folder"
     exit 1
 fi
 
-echo
+echo ""
 read -p "Are you confident? " conf
 
 if   [[ $conf == "yes" ]]; then
@@ -22,7 +23,7 @@ else
     echo "You don't know how not speak!"
     exit 99
 fi
-echo
+echo ""
 
 ## get parameters to use for filtering
 xlim=""

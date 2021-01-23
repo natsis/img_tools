@@ -1,12 +1,13 @@
 #!/bin/bash
 ## created on 2019-01-08
 
-#### find similar images in a folder
+#### Find similar images in a folder and display them and remove interactively
 
 FOLDER="$1"
 THRESH="$2"
 TOMANY="$3"
 
+## default threshold and max group size to display
 THRESH="${THRESH:-90}"
 TOMANY="${TOMANY:-10}"
 
@@ -14,6 +15,7 @@ PID="$$"
 
 if [[ ! -d "$FOLDER" ]];then
     echo "Give a folder to process"
+    echo "$(basename $0) <folder> [threshold] [max group size]"
     exit
 fi
 
@@ -96,9 +98,6 @@ sets="$(wc -l $dupsimgs | cut -d' ' -f1 )"
 echo "Found  $sets  sets ($dupsimgs) "
 echo ""
 
-
-
-
 ## remove excluded images from the results
 if [ -e "$excludef" ]; then
     echo "Exclude file $excludef exist"
@@ -114,13 +113,12 @@ if [ -e "$excludef" ]; then
             line="$(echo "$line" | sed 's/\.art_screensaver/art/g')"
             echo "try remove: $line"
             
-             line=$(echo $line | sed 's/\//\\\//g')
-             sed -i "/$line/d" "$dupsimgs"
-           
+            line=$(echo $line | sed 's/\//\\\//g')
+            sed -i "/$line/d" "$dupsimgs"
+          
         done
     fi
 fi
-
 
 echo ""
 echo "Display a folder frequency count"
@@ -147,13 +145,9 @@ cat "$dupsimgs" | while read line ;do
     echo
 done | sort | uniq -c | sort -bg > "$dupsdirs"
 
-
 cat "$dupsdirs"
 
-
-
-
-## get max monitor dimenstions
+## get max monitor dimenstions for better display
 Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1 | sort -n | tail -1)
 Yaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2 | sort -n | tail -1)
 
@@ -178,11 +172,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo " ...use an empty desktop..."
 
     cnt=1
-    #### send each set of dups to feh for display
+    ## send each set of dups to feh for display
     \cat "$dupsimgs" | while read line ;do
 
         ## count images in the set
-
         nset="$(echo "$line" | sed 's@" "@"\n"@g' | wc -l)"
         nrows="$((  ( nset + ncols - 1 )  / ncols))"
 
@@ -221,10 +214,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 
-
-
-
-
 # read -p "Open duplicate directories y/n? " -r
 # echo ""
 # if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -254,7 +243,6 @@ fi
 #
 #     done
 # fi
-
 
 
 exit 0

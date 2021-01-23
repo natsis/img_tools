@@ -8,9 +8,9 @@ THRESHMIN="$2"
 THRESHMAX="$3"
 TOMANY="$4"
 
+## default threshold and max group size to display
 THRESHMIN="${THRESHMIN:-90}"
 THRESHMAX="${THRESHMAX:-100}"
-
 TOMANY="${TOMANY:-16}"
 
 PID="$$"
@@ -19,6 +19,7 @@ echo "$@"
 
 if [[ ! -d "$FOLDER" ]];then
     echo "Give a folder to process"
+    echo "$(basename $0) <folder> [threshold min $THRESHMIN] [threshold max $THRESHMIN] [max group size $TOMANY]"
     exit
 fi
 
@@ -41,7 +42,6 @@ dupsimgsMIN="$FOLDER/.dupimg_$THRESHMIN.list"
 dupsimgs="$FOLDER/.dupimg_${THRESHMIN}_${THRESHMAX}.list"
 dupsdirs="$FOLDER/.dupdir_${THRESHMIN}_${THRESHMAX}.list"
 
-
 touch "${ignorelist}"
 
 echo ""
@@ -53,8 +53,6 @@ echo "Dir Dups     : $dupsdirs"
 echo "Threshold    : $THRESHMIN - $THRESHMAX  "
 echo "Set limit    : $TOMANY  "
 
-
-
 REPLY="N"
 
 if [ -f "$dupsimgs" ]; then
@@ -65,7 +63,6 @@ if [ -f "$dupsimgs" ]; then
     echo ""
     echo ""
 fi
-
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo " Skipping fingerprinding and matching "
@@ -159,7 +156,6 @@ if [[ $sets -lt 1 ]]; then
 fi
 
 
-
 ## get max monitor dimenstions
 Xaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1 | sort -n | tail -1)
 Yaxis=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2 | sort -n | tail -1)
@@ -227,10 +223,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     done
 fi
 
-
-
-
-
 # read -p "Open duplicate directories y/n? " -r
 # echo ""
 # if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -260,8 +252,5 @@ fi
 #
 #     done
 # fi
-
-
-
 
 exit 0
