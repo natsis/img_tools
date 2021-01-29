@@ -1,7 +1,7 @@
 #!/bin/bash
 ## created on 2019-01-08
 
-#### find similar images in a folder within a range of similarity.
+#### Find similar images in a folder within a range of similarity
 
 FOLDER="$1"
 THRESHMIN="$2"

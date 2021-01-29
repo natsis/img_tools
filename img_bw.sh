@@ -1,7 +1,7 @@
 #!/bin/bash
 ## created on 2020-02-08
 
-#### Convert all images in a folder to black and white.
+#### Convert all images in a folder to black and white
 
 FOLDER="$1"
 : ${FOLDER:="./"}

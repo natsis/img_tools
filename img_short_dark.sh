@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#### Short images in folders according to brightness.
+#### Short images in folders according to brightness
 ## The limits are fine adjusted for my specific use case scenario.
 
 folder="$1"

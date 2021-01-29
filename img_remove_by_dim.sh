@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#### remove or trash images based on given x, y or x*y
+#### Remove or trash images based on given x, y or x*y
 
 folder="$1"
 : ${folder:="./"}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#### Display images in a folder recursively sorted by resulution
+#### Display images in a folder recursively sorted by resolution
 
 FOLDER="$1"
 : ${FOLDER:="./"}
