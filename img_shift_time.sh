@@ -8,7 +8,7 @@
 TIME="$1"
 GLOB="$2"
 
-echo 
+echo
 echo "usage: <+/- HH:MM:SS> <glob>"
 echo "$TIME  $GLOB"
 echo
@@ -43,14 +43,15 @@ fi
 
 echo "SOME TESTING NEEDED"
 exit
+
 ##TODO can be combined to one command
-exiftool -recurse -verbose -preserve \"-CreateDate"${sign}=00:00:00 ${valu}"\" "${GLOB}"
-exiftool -recurse -verbose -preserve \"-DateTimeOriginal"${sign}=00:00:00 ${valu}"\" "${GLOB}"
+exiftool -recurse -verbose -preserve \"-CreateDate${sign}=00:00:00 ${valu}\" "${GLOB}"
+exiftool -recurse -verbose -preserve \"-DateTimeOriginal${sign}=00:00:00 ${valu}\" "${GLOB}"
 
 exit
 exiftool -recurse -verbose -preserve -CreateDate"${sign}=00:00:00 ${valu}" "${GLOB}"
 exiftool -recurse -verbose -preserve -DateTimeOriginal"${sign}=00:00:00 ${valu}" "${GLOB}"
 
-exit 0 
+exit 0
 #exiftool -r -v -P -CreateDate-=0:0:0 1:02:00 ./*.*
 #exiftool -r -v -P -DateTimeOriginal-=0:0:0 1:02:00 ./*.*
